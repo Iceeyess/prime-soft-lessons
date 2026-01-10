@@ -1,3 +1,5 @@
+--SQL. Урок 4. Дополнительные примеры соединений, работа с NULL, DISTINCT
+--https://rutube.ru/video/private/7f79999d739ddadc61383130a6adaaee/?p=9aYJjOG1ToyUU4HwIR2Urw
 --Метод 1
 SELECT     pers.*
            ,dep.departamentname

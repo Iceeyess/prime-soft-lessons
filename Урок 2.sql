@@ -1,3 +1,7 @@
+--SQL. Урок 2. Часть 1
+--https://rutube.ru/video/private/1d782ea7f9c71d47ad2b167294b44223/?p=vkLTp_45DQtnv7GUAUvTdQ
+--SQL. Урок 2. Часть 2
+--https://rutube.ru/video/private/32fbc7024457f9129d8a3f7d01e944ea/?p=a4n2SgiwqrWoMun9hJw6qQ
 select *
 from persons
 where 1=1

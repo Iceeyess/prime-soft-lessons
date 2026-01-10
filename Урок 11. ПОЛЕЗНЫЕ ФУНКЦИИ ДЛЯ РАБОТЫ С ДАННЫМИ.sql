@@ -1,3 +1,5 @@
+--SQL. Урок 11. ПОЛЕЗНЫЕ ФУНКЦИИ ДЛЯ РАБОТЫ С ДАННЫМИ
+--https://rutube.ru/video/private/f0ceeb77db862ba6dc9409a3225a7290/?p=UsSSvxIdyKYuBeTZ9XJ3Jg
 -- решали прошлую домашку вместе
 SELECT d.departamentname
       , COUNT(DISTINCT pc.personid) as qty_cars

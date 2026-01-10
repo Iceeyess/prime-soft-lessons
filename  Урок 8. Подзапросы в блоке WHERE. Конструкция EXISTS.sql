@@ -1,3 +1,5 @@
+--SQL. Урок 8. Подзапросы в блоке WHERE. Конструкция EXISTS
+--https://rutube.ru/video/private/b5bdc358b888a443b7d129467b5e7f2b/?p=tK5Q02rbxi8Ut5uCbrvULw
 SELECT count(pc.personid)
 FROM personcars pc, persons p
 WHERE 1=1

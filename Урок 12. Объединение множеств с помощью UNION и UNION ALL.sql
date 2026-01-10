@@ -1,3 +1,5 @@
+--SQL. Урок 12. Объединение множеств с помощью UNION и UNION ALL
+--https://rutube.ru/video/private/4f14dc456c847c052d9ddce14ecab354/?p=zcGNUHIhlVCyLYTb_vmKiA
 SELECT p.name
       , p.birthdate
       , p.departamentid

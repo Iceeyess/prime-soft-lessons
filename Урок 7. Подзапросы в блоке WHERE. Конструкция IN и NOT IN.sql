@@ -1,3 +1,5 @@
+--SQL. Урок 7. Подзапросы в блоке WHERE. Конструкция IN и NOT IN
+--https://rutube.ru/video/private/5ffe7936575ead73b60eda79691145d9/?p=rmeZD0disuVbl9UYXJD8Aw
 SELECT distinct p.name
 FROM persons p
 INNER JOIN personcars pc ON pc.personid = p.personid;

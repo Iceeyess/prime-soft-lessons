@@ -1,3 +1,5 @@
+--SQL. Урок 5. Агрегатные функции и группировка данных
+--https://rutube.ru/video/private/c7998fab5bcf20fd92d73aef052b9608/?p=7XCQcpTjoaISooKh0I5WzA
 SELECT * --min(p.birthdate) 
 FROM persons p, personcars c
 WHERE 1=1

@@ -1,3 +1,5 @@
+--SQL. Урок 6. Псевдостолбцы и псевдотаблицы. Преобразование. Комментирование
+--https://rutube.ru/video/private/02e6102d8481969a626e14b7d6fc7d35/?p=u2YEvkUeHuSNeM-UgS06Pg
 SELECT d.departamentname
       , SUM(pp.sum) as zp
 FROM departament d

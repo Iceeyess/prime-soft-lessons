@@ -1,3 +1,5 @@
+--SQL. Урок 9. Подзапросы в блоке SELECT. Функции NVL, NVL2, COALESCE
+--https://rutube.ru/video/private/c37b8ceb0b8f74779fb04fb93aa42ba1/?p=qKwrHpHTswjY9yJNWTOG-w
 SELECT p.personid
       , p.name
       , p.birthdate

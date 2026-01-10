@@ -1,3 +1,5 @@
+--SQL. Урок 10. Подзапросы в блоке FROM. Присоединение подзапросов
+--https://rutube.ru/video/private/e2db6b6058a92dfcc609f628add31418/?p=7evZ31IbYgsFklQzSrvNhg
 SELECT t.*
       , NVL(t.total_payment, 0) - nvl(t.sold_items, 0) as to_receive
       , CASE 
