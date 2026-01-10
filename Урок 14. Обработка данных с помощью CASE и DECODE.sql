@@ -1,3 +1,5 @@
+--SQL. Урок 14. Обработка данных с помощью CASE и DECODE
+--https://rutube.ru/video/private/984d8ba8211af8f1fbc371ca55a5856b/?p=WK3q97MVe02FDWq1GEgxHQ
 SELECT t.*
       , CASE
           WHEN filialid = 1 THEN
