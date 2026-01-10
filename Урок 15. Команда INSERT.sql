@@ -15,10 +15,7 @@ SET personid = 22
 WHERE personid = 23;
 
 INSERT INTO PersonPayments
-(personid,
-  sum,
-  period)
-VALUES
+(personid, sum, period)
 (SELECT t.personid
       , t.sum
       , to_date(TO_CHAR(t.period, 'DD') || '.' || TO_CHAR(TO_NUMBER(TO_CHAR(t.period, 'MM')) + 1) || '.' || TO_CHAR(t.period, 'YYYY'), 'dd.mm.yyyy')
