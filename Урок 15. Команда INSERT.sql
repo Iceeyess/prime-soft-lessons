@@ -14,4 +14,24 @@ UPDATE persons
 SET personid = 22 
 WHERE personid = 23;
 
+INSERT INTO PersonPayments
+(personid,
+  sum,
+  period)
+VALUES
+(SELECT t.personid
+      , t.sum
+      , to_date(TO_CHAR(t.period, 'DD') || '.' || TO_CHAR(TO_NUMBER(TO_CHAR(t.period, 'MM')) + 1) || '.' || TO_CHAR(t.period, 'YYYY'), 'dd.mm.yyyy')
+FROM PersonPayments t 
+WHERE EXTRACT(MONTH FROM t.period) = 5);
+COMMIT;
+
+--можно было и проще поступить:
+SELECT t.personid
+      , t.sum
+      , ADD_MONTHS(t.period, 1)
+FROM PersonPayments t 
+WHERE EXTRACT(MONTH FROM t.period) = 5;
+
+  
 
