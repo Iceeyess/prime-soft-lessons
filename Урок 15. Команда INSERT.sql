@@ -1,3 +1,5 @@
+https://rutube.ru/video/private/7ae0abfc849f0517296c9ce7af744f00/?p=Bb5uONjqayFQaJl4LFKl6g
+
 INSERT INTO persons
 (personid, name, birthdate, departamentid, filialid)
 VALUES(
@@ -26,9 +28,23 @@ COMMIT;
 --можно было и проще поступить:
 SELECT t.personid
       , t.sum
-      , ADD_MONTHS(t.period, 1)
+      , t.period --ADD_MONTHS(t.period, 1)
 FROM PersonPayments t 
-WHERE EXTRACT(MONTH FROM t.period) = 5;
+WHERE EXTRACT(MONTH FROM t.period) = 7;
 
-  
+INSERT INTO personpayments
+(personid, sum, period)
+SELECT t.personid
+      , CASE
+          WHEN EXISTS(SELECT * FROM personcars WHERE personid = t.personid)
+            THEN ROUND(t.SUM * 1.02, 2)
+          ELSE
+            t.sum
+        END
+      , to_date('01.07.2019', 'dd.mm.rr')
+FROM PersonPayments t 
+WHERE t.period BETWEEN TO_DATE('01.06.2019', 'dd.mm.yyyy') AND 
+              LAST_DAY('01.06.2019');
+COMMIT;
+
 
