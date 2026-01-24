@@ -66,6 +66,7 @@ UPDATE persons
 SET name = name || ' (автовладелец)'
 WHERE personid IN (SELECT DISTINCT personid FROM  personcars);
 ROLLBACK; -- для отката изменений в БД
+COMMIT;
 
 --Урок 16 ДЗ № 4 v1
 UPDATE personpayments
