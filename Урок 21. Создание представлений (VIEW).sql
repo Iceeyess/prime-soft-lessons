@@ -59,3 +59,17 @@ LEFT JOIN (SELECT personid, MIN(period) as min_period
     FROM personpayments
     GROUP BY personid) pp
   ON pp.personid = p.personid;
+  
+/*
+**Практические задачи к Уроку 21**
+
+1. Создать представление, отображающее список именинников, чье день рождения приходится на следующие 14 дней от текущей даты. В списке вывести PersonID, ФИО, Дату рождения и Название отдела.
+*/
+
+--------------------------------------------------------------------------------
+--CREATE OR REPLACE VIEW incoming_birthdates_v AS
+SELECT *
+FROM persons
+WHERE birthdate BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE + 15) - INTERVAL '1' MINUTE;
+
+select to_number(sysdate, 'mm') from dual;
