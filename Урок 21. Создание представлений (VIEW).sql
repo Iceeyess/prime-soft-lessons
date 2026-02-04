@@ -73,8 +73,8 @@ SELECT p.personid
       , p.birthdate
       , (SELECT departamentname FROM departament WHERE p.departamentid = departamentid) as departamentname
 FROM persons p
-WHERE to_date(to_char(p.birthdate, 'dd.mm.') || EXTRACT(YEAR FROM SYSDATE), 'dd.mm.rrrr') >= SYSDATE AND
-  to_date(to_char(p.birthdate, 'dd.mm.') || EXTRACT(YEAR FROM SYSDATE), 'dd.mm.rrrr') < SYSDATE + 15;
+WHERE to_date(to_char(p.birthdate, 'dd.mm.') || EXTRACT(YEAR FROM SYSDATE), 'dd.mm.rrrr') >= TRUNC(SYSDATE) AND
+  to_date(to_char(p.birthdate, 'dd.mm.') || EXTRACT(YEAR FROM SYSDATE), 'dd.mm.rrrr') < TRUNC(SYSDATE + 15);
 ------------------------------------
 DROP VIEW incoming_birthdates_v;
 ------------------------------------
