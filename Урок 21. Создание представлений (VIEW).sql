@@ -67,9 +67,16 @@ LEFT JOIN (SELECT personid, MIN(period) as min_period
 */
 
 --------------------------------------------------------------------------------
---CREATE OR REPLACE VIEW incoming_birthdates_v AS
-SELECT *
-FROM persons
-WHERE birthdate BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE + 15) - INTERVAL '1' MINUTE;
-
-select to_number(sysdate, 'mm') from dual;
+CREATE OR REPLACE VIEW incoming_birthdates_v AS
+SELECT p.personid
+      , p.name
+      , p.birthdate
+      , (SELECT departamentname FROM departament WHERE p.departamentid = departamentid) as departamentname
+FROM persons p
+WHERE to_date(to_char(p.birthdate, 'dd.mm.') || EXTRACT(YEAR FROM SYSDATE), 'dd.mm.rrrr') > SYSDATE AND
+  to_date(to_char(p.birthdate, 'dd.mm.') || EXTRACT(YEAR FROM SYSDATE), 'dd.mm.rrrr') < SYSDATE + 15;
+------------------------------------
+DROP VIEW incoming_birthdates_v;
+------------------------------------
+select *
+from incoming_birthdates_v; --test
