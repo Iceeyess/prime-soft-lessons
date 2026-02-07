@@ -67,7 +67,7 @@ LEFT JOIN (SELECT personid, MIN(period) as min_period
 */
 
 --------------------------------------------------------------------------------
---version 1 is incorrect due to incorrect logic if add a 14 day in end of year.
+--version 1 is incorrect due to incorrect logic in case if added 14 days in end of year.
 CREATE OR REPLACE VIEW incoming_birthdates_v AS
 SELECT p.personid
       , p.name
