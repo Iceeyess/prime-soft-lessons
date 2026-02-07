@@ -67,6 +67,7 @@ LEFT JOIN (SELECT personid, MIN(period) as min_period
 */
 
 --------------------------------------------------------------------------------
+--version 1 is incorrect due to incorrect logic if add a 14 day in end of year.
 CREATE OR REPLACE VIEW incoming_birthdates_v AS
 SELECT p.personid
       , p.name
@@ -76,6 +77,23 @@ FROM persons p
 WHERE to_date(to_char(p.birthdate, 'dd.mm.') || EXTRACT(YEAR FROM SYSDATE), 'dd.mm.rrrr') >= TRUNC(SYSDATE) AND
   to_date(to_char(p.birthdate, 'dd.mm.') || EXTRACT(YEAR FROM SYSDATE), 'dd.mm.rrrr') < TRUNC(SYSDATE + 15);
 ------------------------------------
+--Correct version_2
+------------------------------------
+CREATE OR REPLACE VIEW incoming_birthdates_v AS
+SELECT p.personid
+      , p.name
+      , p.birthdate
+      , (SELECT departamentname FROM departament WHERE p.departamentid = departamentid) as departamentname
+FROM persons p
+WHERE ADD_MONTHS(p.birthdate, 12 * 
+                  (EXTRACT(YEAR FROM SYSDATE) 
+                  - EXTRACT(YEAR FROM p.birthdate))
+                  ) >= TRUNC(SYSDATE) AND 
+      ADD_MONTHS(p.birthdate, 12 * 
+                  (EXTRACT(YEAR FROM SYSDATE) 
+                  - EXTRACT(YEAR FROM p.birthdate))
+                  ) <= TRUNC(SYSDATE + 14);
+
 DROP VIEW incoming_birthdates_v;
 ------------------------------------
 select *
