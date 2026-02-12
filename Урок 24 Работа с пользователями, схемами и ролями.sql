@@ -198,7 +198,7 @@ SHOW CON_NAME;
 --GRANT SELECT ON persons TO PUBLIC;
 
 --Убрать права через REVOKE 
---REVOKE SELECT ON persons TO someusername;  -- у самого себя нельзя их отбирать, это тоже самое что съесть себя - не получится) 
+--REVOKE SELECT ON persons FROM someusername;  -- у самого себя нельзя их отбирать, это тоже самое что съесть себя - не получится) 
  
  
  -------------------------------------------------------------------------------
@@ -210,7 +210,7 @@ GRANT ALL ON user0.persons TO tester;
 GRANT SELECT ON user0.canteendishes TO tester;
 -- Суть такая, что сначала создается роль, а потом к роли привязываются полномочия( то , что может делать внутри БД)
 GRANT tester to new_some_user; -- дается роль кому-то новому.
-REVOKE tester to some_user; -- убираются права
+REVOKE tester FROM some_user; -- убираются права
 
 --Практические задачи к Уроку 24
 --Домашка
@@ -225,6 +225,6 @@ CREATE USER test IDENTIFIED BY test;
 --2.
 GRANT SELECT ON persons TO test;
 --3.
-REVOKE SELECT ON persons TO test;
+REVOKE SELECT ON persons FROM test;
 --4.
 DROP USER test;
