@@ -32,6 +32,18 @@ from price_list p;
 --partition by - параметр, по которому ведется действие функции стоящей перед OVER , то есть по какому принципу ведется порядок обработки
 --order by - параметр, по которому ведется сортировка внутри оконной функции.
 --------------------------------------------------------------------------------
+--SUM
+--MIN
+--MAX
+--AVG
+--COUNT
+--RANK
+--DENSE_RANK
+--LAG
+--LEAD
+--FIRST_VALUE
+--LAST_VALUE
+--------------------------------------------------------------------------------
 --вывести самого пожилого сотрудника:
 --Способ №1
 select * from(
@@ -112,9 +124,17 @@ WHERE price_cat <= 3;
 --РЕШЕНИЕ:
 --------------------------------------------------------------------------------
 --Задание № 2
+SELECT
+        dishname
+      , dishtype
+      , price
+      , FIRST_VALUE(dishname) OVER(PARTITION BY dishtype ORDER BY price DESC) max_name
+  FROM canteendishes;
+--------------------------------------------------------------------------------
+--Задание № 3 - вне задания, просто максимальный price/ценник тоже по категориям
 SELECT 
       cd.dishname
       , cd.price
       , cd.dishtype
       , MAX(cd.price) OVER(PARTITION BY cd.dishtype) max_price_cat
-FROM canteendishes cd
+FROM canteendishes cd;
